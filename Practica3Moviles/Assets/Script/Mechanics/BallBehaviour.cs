@@ -28,4 +28,13 @@ public class BallBehaviour : MonoBehaviour
         transform.position = spawnPosition.position; 
         transform.rotation = spawnPosition.rotation;
     }
+
+    public void ChangeMaterial(PhysicMaterial physicMaterial, Material material)
+    {
+        Collider collider = GetComponent<Collider>();
+        collider.material = physicMaterial;
+
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer.material = material;
+    }
 }

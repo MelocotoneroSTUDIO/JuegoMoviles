@@ -10,11 +10,14 @@ public class PlatformRotation : MonoBehaviour
     [SerializeField] TextMeshPro text3;
     [SerializeField] TextMeshPro text4;
     [SerializeField] bool useGyro;
+    [SerializeField] bool useUnbiasedRotation;
     [SerializeField] bool useAccelerometer;
     [SerializeField] float AccelerationThreshold = 0.05f;
 
     [SerializeField] float speed=5;
     Vector3 localRotation;
+    private float yRotation;
+    private float xRotation;
 
     void Start()
     {
@@ -30,9 +33,19 @@ public class PlatformRotation : MonoBehaviour
     {
         if (useGyro)
         {
-            Quaternion deviceRotation = DeviceRotation.Get();
-            transform.rotation = deviceRotation;
-            text3.text = deviceRotation.ToString();
+            if (useUnbiasedRotation) 
+            {
+                yRotation += -Input.gyro.rotationRateUnbiased.y;
+                xRotation += -Input.gyro.rotationRateUnbiased.x;
+
+                transform.eulerAngles = new Vector3(xRotation, 0, yRotation);
+            }
+            else 
+            {
+                Quaternion deviceRotation = DeviceRotation.Get();
+                transform.rotation = deviceRotation;
+                text3.text = deviceRotation.ToString();
+            }
         }
         if (useAccelerometer) 
         {
@@ -70,5 +83,14 @@ public class PlatformRotation : MonoBehaviour
             // then rotate this object accordingly to the new angle
             transform.Rotate(localRotation);
         }
+    }
+
+    public void ChangeMaterial(PhysicMaterial physicMaterial, Material material) 
+    {
+        Collider collider = GetComponent<Collider>();
+        collider.material = physicMaterial;
+
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer.material = material;
     }
 }

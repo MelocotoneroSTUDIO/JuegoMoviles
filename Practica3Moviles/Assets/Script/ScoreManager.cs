@@ -30,6 +30,7 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScore() 
     {
+        Debug.Log("Added 1");
         Score++;
         textMeshProUGUI.text = $"Score: {Score}";
     }

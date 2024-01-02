@@ -27,7 +27,7 @@ public static class DeviceRotation
             Input.gyro.enabled=true;
             Debug.Log($"Gyro: {Input.gyro.userAcceleration}");
             Debug.Log($"Gyro: {Input.gyro.rotationRate}");
-            //Input.gyro.updateInterval = 0.0167f;
+            Input.gyro.updateInterval = 0.0167f;
         }
         gyroInitialized = true;
     }
