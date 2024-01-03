@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class PlatformRotation : MonoBehaviour
 {
-    [SerializeField] TextMeshPro text1;
-    [SerializeField] TextMeshPro text2;
-    [SerializeField] TextMeshPro text3;
-    [SerializeField] TextMeshPro text4;
+    //[SerializeField] TextMeshPro text1;
+    //[SerializeField] TextMeshPro text2;
+    //[SerializeField] TextMeshPro text3;
+    //[SerializeField] TextMeshPro text4;
     [SerializeField] bool useGyro;
     [SerializeField] bool useUnbiasedRotation;
     [SerializeField] bool useAccelerometer;
@@ -23,8 +23,8 @@ public class PlatformRotation : MonoBehaviour
     {
         Input.gyro.enabled = true;
         Debug.Log(DeviceRotation.hasGyroscope);
-        text1.text = $"Gyro: {DeviceRotation.hasGyroscope}";
-        text2.text = $"Accelerometer: {DeviceAccelerometer.hasAcceletometer}";
+        //text1.text = $"Gyro: {DeviceRotation.hasGyroscope}";
+        //text2.text = $"Accelerometer: {DeviceAccelerometer.hasAcceletometer}";
         localRotation = transform.rotation.eulerAngles;
     }
 
@@ -44,7 +44,7 @@ public class PlatformRotation : MonoBehaviour
             {
                 Quaternion deviceRotation = DeviceRotation.Get();
                 transform.rotation = deviceRotation;
-                text3.text = deviceRotation.ToString();
+                //text3.text = deviceRotation.ToString();
             }
         }
         if (useAccelerometer) 
@@ -54,8 +54,8 @@ public class PlatformRotation : MonoBehaviour
 
             float curSpeed = Time.deltaTime * speed;
 
-            text3.text = $"{Input.acceleration}";
-            text4.text = $"{transform.rotation}";
+            //text3.text = $"{Input.acceleration}";
+            //text4.text = $"{transform.rotation}";
 
             // first update the current rotation angles with input from acceleration axis
 

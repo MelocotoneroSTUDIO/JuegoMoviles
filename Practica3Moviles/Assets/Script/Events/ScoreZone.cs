@@ -6,6 +6,11 @@ public class ScoreZone : MonoBehaviour
 {
     [SerializeField] EventManager eventManager;
 
+    private void Start()
+    {
+        eventManager = FindObjectOfType<EventManager>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         eventManager.OnScore.Invoke();

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -17,9 +18,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] PlatformRotation platform;
     [SerializeField] GameObject platformInstance;
 
+    int randomBallMat = 0;
+    int randomPlatMat = 0;
+
     private void Start()
     {
         eventManager.OnScore += UpdateLevel;
+        eventManager.OnDeath += ResetScore;
+    }
+
+    public void ResetScore() 
+    {
+        Score = 0;
+        ball.ChangeMaterial(physicsMaterials[0], materials[0]);
+        platform.ChangeMaterial(physicsMaterials[0], materials[0]);
     }
 
     public void UpdateLevel() 
@@ -36,11 +48,7 @@ public class GameManager : MonoBehaviour
         //Add obstacles
 
         //determines number of obstacles to place
-        int numberOfObstacles = 0;
-        if (numberOfObstacles > positions.obstaclePostions.Count) 
-        {
-            numberOfObstacles= positions.obstaclePostions.Count;
-        }
+        int numberOfObstacles = Random.Range(0, positions.obstaclePostions.Count);
 
         //Chooses random position and obstacle avoiding same positon
         List<int> obstaclesPlaced = new();
@@ -53,25 +61,27 @@ public class GameManager : MonoBehaviour
             {
                 randPos = Random.Range(0, positions.obstaclePostions.Count);
             } 
-            while (!obstaclesPlaced.Contains(randPos));
+            while (obstaclesPlaced.Contains(randPos));
 
             obstaclesPlaced.Add(randPos);
 
-            Instantiate(Obstacles[randObstacle], positions.obstaclePostions[randPos]);
+            GameObject instance = Instantiate(Obstacles[randObstacle], positions.obstaclePostions[randPos].position,Quaternion.identity);
+            instance.transform.parent = positions.obstaclePostions[randPos];
+
             //Parent to platform
         }
 
         if (Score % 5 == 0) 
         {
-            int random = Random.Range(0, materials.Count);
-            ball.ChangeMaterial(physicsMaterials[random], materials[random]);
-            //Change ball material
+            randomBallMat = Random.Range(0, materials.Count);    
+            //Change ball material every 5 scores
         }
+        ball.ChangeMaterial(physicsMaterials[randomBallMat], materials[randomBallMat]);
         if (Score % 10 == 0) 
         {
-            int random = Random.Range(0, materials.Count);
-            platform.ChangeMaterial(physicsMaterials[random], materials[random]);
-            //Change platform material
+            randomPlatMat = Random.Range(0, materials.Count);    
+            //Change platform material every 10 scores
         }
+        platform.ChangeMaterial(physicsMaterials[randomPlatMat], materials[randomPlatMat]);
     }
 }
