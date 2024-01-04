@@ -84,4 +84,9 @@ public class GameManager : MonoBehaviour
         }
         platform.ChangeMaterial(physicsMaterials[randomPlatMat], materials[randomPlatMat]);
     }
+
+    public void UpdateControls() 
+    {
+        platform.UpdateControls();
+    }
 }

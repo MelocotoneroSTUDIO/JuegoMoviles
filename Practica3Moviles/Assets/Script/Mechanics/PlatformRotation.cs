@@ -26,6 +26,7 @@ public class PlatformRotation : MonoBehaviour
         //text1.text = $"Gyro: {DeviceRotation.hasGyroscope}";
         //text2.text = $"Accelerometer: {DeviceAccelerometer.hasAcceletometer}";
         localRotation = transform.rotation.eulerAngles;
+        UpdateControls();
     }
 
     // Update is called once per frame
@@ -92,5 +93,12 @@ public class PlatformRotation : MonoBehaviour
 
         MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
         meshRenderer.material = material;
+    }
+
+    public void UpdateControls() 
+    {
+        useGyro = Settings.useGyro;
+        useAccelerometer = Settings.useAccelerometer;
+        useUnbiasedRotation = Settings.useUnbiasedRotation;
     }
 }
