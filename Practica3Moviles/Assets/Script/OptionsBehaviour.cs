@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -12,6 +14,16 @@ public class OptionsBehaviour : MonoBehaviour
 
     [SerializeField] Color SelectedColor;
     [SerializeField] Color UnselectedColor;
+
+    [SerializeField] Slider MasterVolumeSlider;
+    [SerializeField] Slider MusicVolumeSlider;
+    [SerializeField] Slider SFXVolumeSlider;
+
+    [SerializeField] TextMeshProUGUI MasterVolumeText;
+    [SerializeField] TextMeshProUGUI MusicVolumeText;
+    [SerializeField] TextMeshProUGUI SFXVolumeText;
+
+    [SerializeField] AudioMixer Mixer;
 
     // Start is called before the first frame update
     void Start()
@@ -81,6 +93,33 @@ public class OptionsBehaviour : MonoBehaviour
         }
     }
 
+    public void ChangeMasterVolume() 
+    {
+        float value = MasterVolumeSlider.value;
+        MasterVolumeText.text = (100f*value).ToString("0");
+        Mixer.SetFloat("Master",Mathf.Log10(value)*20);
+
+        Settings.MasterVolume = value;
+    }
+
+    public void ChangeMusicVolume()
+    {
+        float value = MusicVolumeSlider.value;
+        MusicVolumeText.text = (100f * value).ToString("0");
+        Mixer.SetFloat("Music", Mathf.Log10(value) * 20);
+
+        Settings.MusicVolume = value;
+    }
+
+    public void ChangeSFXVolume()
+    {
+        float value = SFXVolumeSlider.value;
+        SFXVolumeText.text = (100f * value).ToString("0");
+        Mixer.SetFloat("SFX", Mathf.Log10(value) * 20);
+
+        Settings.SFXVolume = value;
+    }
+
     void Initialize() 
     {
         if (Settings.useGyro)
@@ -111,6 +150,14 @@ public class OptionsBehaviour : MonoBehaviour
         {
             unbiasedRotationButton.image.color = UnselectedColor;
         }
+
+        MasterVolumeSlider.value = Settings.MasterVolume;
+        MusicVolumeSlider.value = Settings.MusicVolume;
+        SFXVolumeSlider.value = Settings.SFXVolume;
+
+        ChangeMasterVolume();
+        ChangeMusicVolume();
+        ChangeSFXVolume();
     }
 
     public void GoToMainMenu()
