@@ -12,7 +12,7 @@ public class ScoreAudio : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioSource audioSource = GetComponent<AudioSource>();
+        m_AudioSource = GetComponent<AudioSource>();
         eventManager.OnScore += PlayScoreAudio;
         eventManager.OnDeath += PlayFailAudio;
     }

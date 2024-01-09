@@ -199,7 +199,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4049889744933363061, guid: 6ce776d09a7eeff4e95af38f21c1fe5d, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 581e2fd10ce243545915ea1dd167a0d4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1050,9 +1050,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!114 &1018404539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1438,7 +1438,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307593898}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -11, z: 0}
+  m_LocalPosition: {x: 0, y: -22.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2686,25 +2686,21 @@ PrefabInstance:
       propertyPath: eventManager
       value: 
       objectReference: {fileID: 311873757}
-    - target: {fileID: 2331541997299103655, guid: 12d7816fe7fdd3942b7c040f378df152, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.533
-      objectReference: {fileID: 0}
-    - target: {fileID: 2331541997299103655, guid: 12d7816fe7fdd3942b7c040f378df152, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.19
-      objectReference: {fileID: 0}
     - target: {fileID: 4415142040818054975, guid: 12d7816fe7fdd3942b7c040f378df152, type: 3}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4415142040818054975, guid: 12d7816fe7fdd3942b7c040f378df152, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.7089
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415142040818054975, guid: 12d7816fe7fdd3942b7c040f378df152, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4415142040818054975, guid: 12d7816fe7fdd3942b7c040f378df152, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.3545
       objectReference: {fileID: 0}
     - target: {fileID: 4415142040818054975, guid: 12d7816fe7fdd3942b7c040f378df152, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2741,30 +2737,6 @@ PrefabInstance:
     - target: {fileID: 7239429807180620558, guid: 12d7816fe7fdd3942b7c040f378df152, type: 3}
       propertyPath: m_Name
       value: Platform
-      objectReference: {fileID: 0}
-    - target: {fileID: 8035527219354052926, guid: 12d7816fe7fdd3942b7c040f378df152, type: 3}
-      propertyPath: text1
-      value: 
-      objectReference: {fileID: 1969060912}
-    - target: {fileID: 8035527219354052926, guid: 12d7816fe7fdd3942b7c040f378df152, type: 3}
-      propertyPath: text2
-      value: 
-      objectReference: {fileID: 1025218840}
-    - target: {fileID: 8035527219354052926, guid: 12d7816fe7fdd3942b7c040f378df152, type: 3}
-      propertyPath: text3
-      value: 
-      objectReference: {fileID: 418235488}
-    - target: {fileID: 8035527219354052926, guid: 12d7816fe7fdd3942b7c040f378df152, type: 3}
-      propertyPath: text4
-      value: 
-      objectReference: {fileID: 1644606667}
-    - target: {fileID: 8035527219354052926, guid: 12d7816fe7fdd3942b7c040f378df152, type: 3}
-      propertyPath: useGyro
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8035527219354052926, guid: 12d7816fe7fdd3942b7c040f378df152, type: 3}
-      propertyPath: useAccelerometer
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
