@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] EventManager eventManager;
     [SerializeField] int Score = 0;
+    [SerializeField] int Lives = 3;
+    [SerializeField] TextMeshProUGUI LivesText;
 
     [SerializeField] List<GameObject> Levels;
     [SerializeField] List<GameObject> Obstacles;
@@ -30,6 +34,13 @@ public class GameManager : MonoBehaviour
 
     public void ResetScore() 
     {
+        Lives--;
+        if (Lives < 0) 
+        {
+            SceneManager.LoadScene("GameOverScreen");
+        }
+        LivesText.text = $"Lives: {Lives}";
+
         Score = 0;
         ball.ChangeMaterial(physicsMaterials[0], ballMaterials[0]);
         platform.ChangeMaterial(physicsMaterials[0], platformMaterials[0]);
