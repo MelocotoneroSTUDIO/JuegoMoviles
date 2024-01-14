@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] PlatformRotation platform;
     [SerializeField] GameObject platformInstance;
 
+    [SerializeField] Transform PlatformController;
+
     int randomBallMat = 0;
     int randomPlatMat = 0;
 
@@ -42,6 +44,8 @@ public class GameManager : MonoBehaviour
         LivesText.text = $"Lives: {Lives}";
 
         Score = 0;
+        randomBallMat = 0;
+        randomPlatMat = 0;
         ball.ChangeMaterial(physicsMaterials[0], ballMaterials[0]);
         platform.ChangeMaterial(physicsMaterials[0], platformMaterials[0]);
     }
@@ -53,14 +57,15 @@ public class GameManager : MonoBehaviour
         //Change Level
         Destroy(platformInstance);
         int rand = Random.Range(0, Levels.Count);
-        platformInstance = Instantiate(Levels[rand],Vector3.zero, Quaternion.identity);
+        platformInstance = Instantiate(Levels[rand],Vector3.zero,Quaternion.identity);
+        
         //Maybe random rotate instance on Y axis 90*rand[0,4]
         platform = platformInstance.GetComponent<PlatformRotation>();
         PlatformObstaclePositions positions = platformInstance.GetComponent<PlatformObstaclePositions>();
         //Add obstacles
 
         //determines number of obstacles to place
-        int numberOfObstacles = Random.Range(0, positions.obstaclePostions.Count);
+        int numberOfObstacles = Random.Range(Random.Range(0,Score%(positions.obstaclePostions.Count-1)), positions.obstaclePostions.Count);
 
         //Chooses random position and obstacle avoiding same positon
         List<int> obstaclesPlaced = new();
@@ -79,6 +84,7 @@ public class GameManager : MonoBehaviour
 
             GameObject instance = Instantiate(Obstacles[randObstacle], positions.obstaclePostions[randPos].position,Quaternion.identity);
             instance.transform.parent = positions.obstaclePostions[randPos];
+            //instance.transform.localScale = Vector3.one;
             instance.transform.Rotate(new Vector3(0,Random.Range(0,360),0));
             //Parent to platform
         }
@@ -95,10 +101,14 @@ public class GameManager : MonoBehaviour
             //Change platform material every 10 scores
         }
         platform.ChangeMaterial(physicsMaterials[randomPlatMat], platformMaterials[randomPlatMat]);
+
+
+        platformInstance.transform.rotation = PlatformController.rotation;
+        platformInstance.transform.SetParent(PlatformController);
     }
 
     public void UpdateControls() 
     {
-        platform.UpdateControls();
+        PlatformController.GetComponent<PlayerInputController>().UpdateControls();
     }
 }

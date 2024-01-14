@@ -8,9 +8,9 @@ public static class Settings
     public static bool useAccelerometer = false;
     public static bool useUnbiasedRotation = false;
 
-    public static float MasterVolume = 5;
-    public static float MusicVolume = 5;
-    public static float SFXVolume = 5;
+    public static float MasterVolume = 1;
+    public static float MusicVolume = 1;
+    public static float SFXVolume = 1;
 
     public static void LoadSettings() 
     {

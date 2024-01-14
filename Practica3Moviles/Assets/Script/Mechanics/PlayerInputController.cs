@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
-public class PlatformRotation : MonoBehaviour
+public class PlayerInputController : MonoBehaviour
 {
-    /*[SerializeField] bool useGyro;
+    [SerializeField] bool useGyro;
     [SerializeField] bool useUnbiasedRotation;
     [SerializeField] bool useAccelerometer;
     [SerializeField] float AccelerationThreshold = 0.05f;
 
-    [SerializeField] float speed=5;
+    [SerializeField] float speed = 5;
     Vector3 localRotation;
     private float yRotation;
     private float xRotation;
@@ -31,7 +30,7 @@ public class PlatformRotation : MonoBehaviour
         CalculateRotation();
     }
 
-    void CalculateRotation() 
+    void CalculateRotation()
     {
         if (useGyro)
         {
@@ -81,22 +80,12 @@ public class PlatformRotation : MonoBehaviour
             // then rotate this object accordingly to the new angle
             transform.Rotate(localRotation);
         }
-    }*/
-
-
-    public void ChangeMaterial(PhysicMaterial physicMaterial, Material material) 
-    {
-        Collider collider = GetComponent<Collider>();
-        collider.material = physicMaterial;
-
-        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
-        meshRenderer.material = material;
     }
 
-    /*public void UpdateControls() 
+    public void UpdateControls()
     {
         useGyro = Settings.useGyro;
         useAccelerometer = Settings.useAccelerometer;
         useUnbiasedRotation = Settings.useUnbiasedRotation;
-    }*/
+    }
 }
