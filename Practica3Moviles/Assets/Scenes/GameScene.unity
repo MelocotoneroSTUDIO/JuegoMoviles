@@ -821,14 +821,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.06035171, y: 0, z: 0, w: 0.9981772}
-  m_LocalPosition: {x: 0, y: 17, z: -84.7}
+  m_LocalRotation: {x: 0.12422432, y: -0, z: -0, w: 0.99225414}
+  m_LocalPosition: {x: 0, y: 26.2, z: -78.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 6.92, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 14.272, y: 0, z: 0}
 --- !u!1 &1018404532
 GameObject:
   m_ObjectHideFlags: 0
@@ -1942,7 +1942,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!135 &1498312262
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2696,6 +2696,10 @@ PrefabInstance:
       propertyPath: m_ReceiveShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8616562853047217044, guid: e98067d70da35164c83d402359f63869, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 14
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -5063223942988036812, guid: e98067d70da35164c83d402359f63869, type: 3}
@@ -2860,6 +2864,10 @@ PrefabInstance:
       propertyPath: eventManager
       value: 
       objectReference: {fileID: 311873757}
+    - target: {fileID: 7219456239436393917, guid: 3801418c30575a442893079357964555, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
