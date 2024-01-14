@@ -808,7 +808,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.8591744, b: 0.6264151, a: 1}
-  m_Intensity: 1000
+  m_Intensity: 1
   m_Range: 70
   m_SpotAngle: 11
   m_InnerSpotAngle: 11
@@ -3133,6 +3133,10 @@ PrefabInstance:
       propertyPath: eventManager
       value: 
       objectReference: {fileID: 311873757}
+    - target: {fileID: 6415189116543262491, guid: 3801418c30575a442893079357964555, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3ea1f7f1cdd307949bbd79785b9a4ddf, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
