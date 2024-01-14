@@ -5,7 +5,7 @@ using UnityEngine;
 public class BallBehaviour : MonoBehaviour
 {
     [SerializeField] EventManager eventManager;
-    [SerializeField] Transform spawnPosition;
+    [SerializeField] List<Transform> spawnPositions;
     [SerializeField] Rigidbody body;
 
     // Start is called before the first frame update
@@ -25,8 +25,9 @@ public class BallBehaviour : MonoBehaviour
     public void ResetPostion() 
     {
         body.velocity = Vector3.zero;
-        transform.position = spawnPosition.position; 
-        transform.rotation = spawnPosition.rotation;
+        int rand = Random.Range(0, spawnPositions.Count);
+        transform.position = spawnPositions[rand].position; 
+        transform.rotation = spawnPositions[rand].rotation;
     }
 
     public void ChangeMaterial(PhysicMaterial physicMaterial, Material material)

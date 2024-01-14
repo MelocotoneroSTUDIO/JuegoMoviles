@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<GameObject> Levels;
     [SerializeField] List<GameObject> Obstacles;
     [SerializeField] List<PhysicMaterial> physicsMaterials;
-    [SerializeField] List<Material> materials;
+    [SerializeField] List<Material> platformMaterials;
+    [SerializeField] List<Material> ballMaterials;
 
 
     [SerializeField] BallBehaviour ball;
@@ -30,8 +31,8 @@ public class GameManager : MonoBehaviour
     public void ResetScore() 
     {
         Score = 0;
-        ball.ChangeMaterial(physicsMaterials[0], materials[0]);
-        platform.ChangeMaterial(physicsMaterials[0], materials[0]);
+        ball.ChangeMaterial(physicsMaterials[0], ballMaterials[0]);
+        platform.ChangeMaterial(physicsMaterials[0], platformMaterials[0]);
     }
 
     public void UpdateLevel() 
@@ -67,22 +68,22 @@ public class GameManager : MonoBehaviour
 
             GameObject instance = Instantiate(Obstacles[randObstacle], positions.obstaclePostions[randPos].position,Quaternion.identity);
             instance.transform.parent = positions.obstaclePostions[randPos];
-
+            instance.transform.Rotate(new Vector3(0,Random.Range(0,360),0));
             //Parent to platform
         }
 
         if (Score % 5 == 0) 
         {
-            randomBallMat = Random.Range(0, materials.Count);    
+            randomBallMat = Random.Range(0, ballMaterials.Count);    
             //Change ball material every 5 scores
         }
-        ball.ChangeMaterial(physicsMaterials[randomBallMat], materials[randomBallMat]);
+        ball.ChangeMaterial(physicsMaterials[randomBallMat], ballMaterials[randomBallMat]);
         if (Score % 10 == 0) 
         {
-            randomPlatMat = Random.Range(0, materials.Count);    
+            randomPlatMat = Random.Range(0, platformMaterials.Count);    
             //Change platform material every 10 scores
         }
-        platform.ChangeMaterial(physicsMaterials[randomPlatMat], materials[randomPlatMat]);
+        platform.ChangeMaterial(physicsMaterials[randomPlatMat], platformMaterials[randomPlatMat]);
     }
 
     public void UpdateControls() 
