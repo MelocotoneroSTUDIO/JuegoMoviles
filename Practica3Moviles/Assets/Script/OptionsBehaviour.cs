@@ -64,6 +64,7 @@ public class OptionsBehaviour : MonoBehaviour
         {
             unbiasedRotationButton.image.color = UnselectedColor;
         }
+        Settings.SaveSettings();
     }
 
     public void UseAccelerometer() 
@@ -77,6 +78,7 @@ public class OptionsBehaviour : MonoBehaviour
         accelerometerButton.image.color = SelectedColor;
         unbiasedRotationButton.image.color = UnselectedColor;
         unbiasedRotationButton.interactable = false;
+        Settings.SaveSettings();
     }
 
     public void UseUnbiasedRotation() 
@@ -91,6 +93,7 @@ public class OptionsBehaviour : MonoBehaviour
             Settings.useUnbiasedRotation = true;
             unbiasedRotationButton.image.color = SelectedColor;
         }
+        Settings.SaveSettings();
     }
 
     public void ChangeMasterVolume() 
@@ -100,6 +103,7 @@ public class OptionsBehaviour : MonoBehaviour
         Mixer.SetFloat("Master",Mathf.Log10(value)*20);
 
         Settings.MasterVolume = value;
+        Settings.SaveSettings();
     }
 
     public void ChangeMusicVolume()
@@ -109,6 +113,7 @@ public class OptionsBehaviour : MonoBehaviour
         Mixer.SetFloat("Music", Mathf.Log10(value) * 20);
 
         Settings.MusicVolume = value;
+        Settings.SaveSettings();
     }
 
     public void ChangeSFXVolume()
@@ -118,10 +123,13 @@ public class OptionsBehaviour : MonoBehaviour
         Mixer.SetFloat("SFX", Mathf.Log10(value) * 20);
 
         Settings.SFXVolume = value;
+        Settings.SaveSettings();
     }
 
     void Initialize() 
     {
+        Settings.LoadSettings();
+
         if (Settings.useGyro)
         {
             gyroButton.image.color = SelectedColor;
